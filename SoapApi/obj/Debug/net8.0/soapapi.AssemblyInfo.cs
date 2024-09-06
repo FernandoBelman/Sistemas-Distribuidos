@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("soapapi")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c499a35b15dabecc871d73e3297bef3876c4fe62")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e4c049e99b05badb8f6d8bc52464bcd61d2080be")]
 [assembly: System.Reflection.AssemblyProductAttribute("soapapi")]
 [assembly: System.Reflection.AssemblyTitleAttribute("soapapi")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
