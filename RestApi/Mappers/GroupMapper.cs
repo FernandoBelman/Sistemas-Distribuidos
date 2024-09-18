@@ -12,16 +12,15 @@ public static class GroupMapper{
             CreationDate = group.CreationDate
         };
     }
-        public static GroupModel ToModel(this GroupEntity group){
-            if(group is null){
-                return null;
-            }
-
-            return new GroupModel{
-                Id= group.Id,
-                Name = group.Name,
-                Users = group.Users,
-                CreationDate = group.CreatedAt
-            };
+    public static GroupModel ToModel(this GroupEntity group){
+        if(group is null){
+            return null;
         }
+        return new GroupModel{
+            Id = group.Id,
+            Name = group.Name,
+            Users = group.Users,
+            CreationDate = group.CreatedAt
+        };
+    }
 }
