@@ -76,5 +76,5 @@ public class UserService : IUserContract{
 
         return updateUser.ToDto();
     }
-
 }
+
