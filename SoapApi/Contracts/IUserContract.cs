@@ -12,6 +12,7 @@ public interface IUserContract{
     public Task<IList<UserResponseDto>> GetAll(CancellationToken cancellationToken);
 
     [OperationContract]
+
     public Task<IList<UserResponseDto>> GetAllByEmail(string email, CancellationToken cancellationToken);
 
     [OperationContract]
