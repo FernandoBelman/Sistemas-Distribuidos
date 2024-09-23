@@ -9,4 +9,6 @@ namespace SoapApi.Repositories;
         public Task DeleteByIdAsync(UserModel user, CancellationToken cancellationToken);    
         public Task<UserModel> CreateAsync(UserModel user, CancellationToken cancellationToken);
         public Task<UserModel> UpdateAsync(UserModel user, CancellationToken cancellationToken1);
+
 }
+

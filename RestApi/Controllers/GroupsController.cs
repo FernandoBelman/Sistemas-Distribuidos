@@ -2,7 +2,9 @@ using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using RestApi.Dtos;
 using RestApi.Services;
+
 using RestApi.Dtos;
+
 using RestApi.Mappers;
 
 namespace RestApi.Controllers;
@@ -26,4 +28,5 @@ public class GroupsController : ControllerBase
         }
         return Ok(group.ToDto());
     }
+
 }

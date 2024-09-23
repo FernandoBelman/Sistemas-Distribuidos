@@ -5,6 +5,7 @@ using RestApi.Models;
 
 namespace RestApi.Repositories;
 
+
 public class GroupRepository : IGroupRepository{
     private readonly IMongoCollection<GroupEntity> _groups;
 
@@ -25,4 +26,5 @@ public class GroupRepository : IGroupRepository{
             return null;
         }
     }
+
 }
