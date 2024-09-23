@@ -14,6 +14,7 @@ builder.Services.AddSingleton<IMongoClient, MongoClient> (s => new MongoClient(b
 builder.Services.AddScoped<IGroupService, GroupService>();
 builder.Services.AddScoped<IGroupRepository, GroupRepository>();
 
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

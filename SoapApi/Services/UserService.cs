@@ -12,6 +12,7 @@ public class UserService : IUserContract{
         _userRepository = userRepository;
     }
 
+
     public async Task<UserResponseDto> CreateUser(UserCreateRequestDto userRequest, CancellationToken cancellationToken)
     {
         var user = userRequest.ToModel();
@@ -55,6 +56,7 @@ public class UserService : IUserContract{
         throw new FaultException("User not found");
     }
 
+
     public async Task<UserResponseDto> UpdateUser(Guid userId, UserUpdateRequestDto updateRequest, CancellationToken cancellationToken)
     {
         //aqui obtenemos el usuario mediante su id 
@@ -74,4 +76,6 @@ public class UserService : IUserContract{
 
         return updateUser.ToDto();
     }
+
 }
+

@@ -39,6 +39,7 @@ public static class UserMapper{
         };
     }
 
+
     public static UserResponseDto ToDto(this UserModel user){
         return new UserResponseDto{
             UserId = user.Id,

@@ -1,6 +1,7 @@
 using System.Runtime.Serialization;
 
 namespace RestApi.Infrastructure.Soap;
+
 [DataContract]
 public class UserResponseDto
 {
@@ -14,4 +15,5 @@ public class UserResponseDto
     public string LastName {get; set; } = null!;
     [DataMember]
     public DateTime BirthDate {get; set; }
+
 }

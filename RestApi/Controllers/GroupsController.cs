@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using RestApi.Dtos;
 using RestApi.Services;
+
 using RestApi.Mappers;
 
 namespace RestApi.Controllers;
@@ -25,6 +26,7 @@ public class GroupsController : ControllerBase
         }
         return Ok(group.ToDto());
     }
+
     [HttpGet]
     public async Task<ActionResult<IEnumerable<GroupResponse>>> GetGroupsByName([FromQuery] string name, CancellationToken cancellationToken)
     {
@@ -35,4 +37,5 @@ public class GroupsController : ControllerBase
         }
         return Ok(groups.Select(group => group.ToDto()));
     }
+
 }

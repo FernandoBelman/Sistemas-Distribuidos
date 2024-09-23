@@ -17,4 +17,5 @@ public class RelationalDbContext : DbContext{
             base.OnModelCreating(modelBuilder);
 
         }
+
 }
