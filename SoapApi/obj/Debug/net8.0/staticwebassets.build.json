@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "7lybZNAGpSAuQw/plVSOSHfn73skNJFJX0M6nhD6PCc=",
+  "Source": "soapapi",
+  "BasePath": "_content/soapapi",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

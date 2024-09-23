@@ -8,4 +8,5 @@ public class RelationalDbContext : DbContext{
 
     }
     public DbSet<UserEntity> Users {get; set; }
+
 }
