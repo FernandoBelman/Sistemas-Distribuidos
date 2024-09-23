@@ -10,12 +10,12 @@
 using System;
 using System.Reflection;
 
-[assembly: System.Reflection.AssemblyCompanyAttribute("soapapi")]
+[assembly: System.Reflection.AssemblyCompanyAttribute("HelloWorld")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e4c049e99b05badb8f6d8bc52464bcd61d2080be")]
-[assembly: System.Reflection.AssemblyProductAttribute("soapapi")]
-[assembly: System.Reflection.AssemblyTitleAttribute("soapapi")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+bc963fae112471ccc7bc9a19b13fdf520251968e")]
+[assembly: System.Reflection.AssemblyProductAttribute("HelloWorld")]
+[assembly: System.Reflection.AssemblyTitleAttribute("HelloWorld")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
 
 // Generado por la clase WriteCodeFragment de MSBuild.
