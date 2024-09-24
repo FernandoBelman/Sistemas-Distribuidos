@@ -5,7 +5,6 @@ using RestApi.Models;
 
 namespace RestApi.Repositories;
 
-
 public class GroupRepository : IGroupRepository
 {
     private readonly IMongoCollection<GroupEntity> _groups;
@@ -20,11 +19,9 @@ public class GroupRepository : IGroupRepository
             var group = await _groups.Find(filter).FirstOrDefaultAsync(cancellationToken);
             return group.ToModel();
         }catch(FormatException){
-
             return null;
         }
     }
-
 
     public async Task<IEnumerable<GroupModel>> GetByNameAsync(string name, CancellationToken cancellationToken) // Nuevo método
     {
@@ -32,5 +29,4 @@ public class GroupRepository : IGroupRepository
         var groups = await _groups.Find(filter).ToListAsync(cancellationToken);
         return groups.Select(group => group.ToModel());
     }
-
 }
