@@ -20,6 +20,7 @@ public class GroupsController : ControllerBase
         _groupService = groupService;
     }
     [HttpGet("{id}")]
+    [Authorize(Policy ="Read")]
     public async Task<ActionResult<GroupResponse>> GetGroupById(string Id, CancellationToken cancellationToken)
     {
         var group = await _groupService.GetGroupByIdAsync(Id, cancellationToken);

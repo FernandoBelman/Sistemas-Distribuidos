@@ -3,7 +3,6 @@ kind: Service
 metadata:
   name: groups-api-svc
   namespace: backend-api
-
 spec:
   type: LoadBalancer
   ports: 

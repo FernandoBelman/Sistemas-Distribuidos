@@ -3,6 +3,8 @@ using RestApi.Repositories;
 using RestApi.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
+using ZstdSharp.Unsafe;
+using Microsoft.Extensions.Options;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -32,7 +34,10 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         };
     });
 
-    builder.Services.AddAuthorization();
+    builder.Services.AddAuthorization(options =>{
+        options.AddPolicy("Read", policy => policy.RequireClaim("http://schemas.microsoft.com/identity/claim/scope", "read"));
+        options.AddPolicy("Write", policy => policy.RequireClaim("http://schemas.microsoft.com/identity/claim/scope", "write"));
+    });
 
 var app = builder.Build();
 
