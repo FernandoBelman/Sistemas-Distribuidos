@@ -35,8 +35,8 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     });
 
     builder.Services.AddAuthorization(options =>{
-        options.AddPolicy("Read", policy => policy.RequireClaim("http://schemas.microsoft.com/identity/claim/scope", "read"));
         options.AddPolicy("Write", policy => policy.RequireClaim("http://schemas.microsoft.com/identity/claim/scope", "write"));
+        options.AddPolicy("Read", policy => policy.RequireClaim("http://schemas.microsoft.com/identity/claim/scope", "read"));
     });
 
 var app = builder.Build();

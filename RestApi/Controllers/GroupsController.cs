@@ -61,6 +61,7 @@ public class GroupsController : ControllerBase
 
     //Paginación tarea*
     [HttpGet]
+    [Authorize(Policy = "Read")]
     public async Task<ActionResult<IEnumerable<GroupResponse>>> GetGroupsByName(
         [FromQuery] string name, 
         [FromQuery] int pageIndex, 
@@ -79,6 +80,7 @@ public class GroupsController : ControllerBase
     }
     
     [HttpDelete("{id}")]
+    [Authorize(Policy = "Write")]
     public async Task<IActionResult> DeleteGroup(string id, CancellationToken cancellationToken){
         try{
             await _groupService.DeleteGroupByIdAsync(id, cancellationToken);
@@ -89,6 +91,7 @@ public class GroupsController : ControllerBase
     }
 
     [HttpPost]
+    [Authorize(Policy = "Write")]
     public async Task<ActionResult<GroupResponse>> CreateGroup([FromBody]CreateGroupRequest groupRequest, CancellationToken cancellationToken){
         try{
             var group = await _groupService.CreateGroupAsync(groupRequest.Name, groupRequest.Users, cancellationToken);
@@ -117,6 +120,7 @@ public class GroupsController : ControllerBase
     }
 
     [HttpPut("{id}")]
+    [Authorize(Policy = "Write")]
     public async Task<IActionResult> UpdateGroup(string id, [FromBody] UpdateGroupRequest groupRequest, CancellationToken cancellationToken){
         try{
             await _groupService.UpdateGroupAsync(id, groupRequest.Name, groupRequest.Users, cancellationToken);
