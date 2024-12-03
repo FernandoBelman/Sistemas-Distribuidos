@@ -17,6 +17,7 @@ builder.Services.AddScoped<IGroupService, GroupService>();
 builder.Services.AddScoped<IGroupRepository, GroupRepository>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 
+
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>{
         options.Authority = builder.Configuration.GetValue<string>("Authentication:Authority");
@@ -33,6 +34,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     });
 
     builder.Services.AddAuthorization();
+
 
 var app = builder.Build();
 

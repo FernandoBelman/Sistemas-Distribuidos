@@ -11,6 +11,7 @@ public class GroupService : IGroupService
     public GroupService(IGroupRepository groupRepository, IUserRepository userRepository){
         _groupRepository = groupRepository;
         _userRepository = userRepository;
+
     }
 
     public async Task DeleteGroupByIdAsync(string id, CancellationToken cancellationToken)
@@ -22,6 +23,7 @@ public class GroupService : IGroupService
 
         await _groupRepository.DeleteByIdAsync(id, cancellationToken);
     }
+
 
     public async Task<GroupUserModel> GetGroupByIdAsync(string Id, CancellationToken cancellationToken)
     {
@@ -35,11 +37,13 @@ public class GroupService : IGroupService
             CreationDate = group.CreationDate,
             Users = (await Task.WhenAll(group.Users.Select(userId => _userRepository.GetByIdAsync(userId, cancellationToken)))).Where(user => user !=null).ToList()
 
+
         };
     }
 
 
     public async Task<IEnumerable<GroupUserModel>> GetGroupsByNameAsync(string name, int pageIndex, int pageSize, string orderBy, CancellationToken cancellationToken)
+
     {
         var groups = await _groupRepository.GetByNameAsync(name, pageIndex, pageSize, orderBy, cancellationToken);
 
@@ -72,6 +76,7 @@ public class GroupService : IGroupService
 
         var usersDB = await Task.WhenAll(users.Select(async userId => 
         {
+
             var user = await _userRepository.GetByIdAsync(userId, cancellationToken);
             if (user is null)
             {
@@ -85,6 +90,7 @@ public class GroupService : IGroupService
             Id = group.Id,
             Name = group.Name,
             CreationDate = group.CreationDate,
+
             Users = (await Task.WhenAll(group.Users.Select(userId => _userRepository.GetByIdAsync(userId, cancellationToken)))).Where(user => user !=null).ToList()
 
         };
@@ -137,6 +143,7 @@ public class GroupService : IGroupService
         }));
 
         await _groupRepository.UpdateGroupAsync(id, name, users, cancellationToken);
+
     }
 
 }
