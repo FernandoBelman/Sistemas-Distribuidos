@@ -59,11 +59,13 @@ public class GroupsController : ControllerBase
     //Paginación tarea*
     [HttpGet]
     public async Task<ActionResult<IEnumerable<GroupResponse>>> GetGroupsByName(
+
         [FromQuery] string name, 
         [FromQuery] int pageIndex, 
         [FromQuery] int pageSize, 
         [FromQuery] string orderBy,
         CancellationToken cancellationToken)
+
     {
         var groups = await _groupService.GetGroupsByNameAsync(name, pageIndex, pageSize, orderBy, cancellationToken);
         
@@ -98,10 +100,12 @@ public class GroupsController : ControllerBase
             return Conflict(NewValidationProblemDetails("One or more validation errors occured.", HttpStatusCode.Conflict, new Dictionary<string, string[]>{
                 {"Groups", ["Group with same name already exists"]}
             }));
+
         }catch(UserDoesNotExistsException){
             return Conflict(NewValidationProblemDetails("One or more validation errors occured.", HttpStatusCode.Conflict, new Dictionary<string, string[]>{
                 {"Groups", ["User not found with the provided ID"]}
             }));
+
         }
     }
 
@@ -112,6 +116,7 @@ public class GroupsController : ControllerBase
             Errors = errors
         };
     }
+
 
     [HttpPut("{id}")]
     public async Task<IActionResult> UpdateGroup(string id, [FromBody] UpdateGroupRequest groupRequest, CancellationToken cancellationToken){
@@ -133,6 +138,7 @@ public class GroupsController : ControllerBase
                 {"Groups", ["User not found with the provided ID"]}
             }));
         }
+
     }
 
 }
