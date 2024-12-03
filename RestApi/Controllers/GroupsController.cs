@@ -59,11 +59,13 @@ public class GroupsController : ControllerBase
     //Paginación tarea*
     [HttpGet]
     public async Task<ActionResult<IEnumerable<GroupResponse>>> GetGroupsByName(
+
         [FromQuery] string name, 
         [FromQuery] int pageIndex, 
         [FromQuery] int pageSize, 
         [FromQuery] string orderBy,
         CancellationToken cancellationToken)
+
     {
         var groups = await _groupService.GetGroupsByNameAsync(name, pageIndex, pageSize, orderBy, cancellationToken);
         

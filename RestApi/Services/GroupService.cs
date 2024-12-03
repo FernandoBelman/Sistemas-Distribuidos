@@ -35,6 +35,7 @@ public class GroupService : IGroupService
             CreationDate = group.CreationDate,
             Users = (await Task.WhenAll(group.Users.Select(userId => _userRepository.GetByIdAsync(userId, cancellationToken)))).Where(user => user !=null).ToList()
 
+
         };
     }
 
@@ -94,6 +95,7 @@ public class GroupService : IGroupService
             CreationDate = group.CreationDate,
             Users = (await Task.WhenAll(group.Users.Select(userId => _userRepository.GetByIdAsync(userId, cancellationToken)))).Where(user => user != null).ToList()
         };
+
     }
 
 }
