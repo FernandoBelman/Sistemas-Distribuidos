@@ -3,8 +3,10 @@ using RestApi.Repositories;
 using RestApi.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
+
 using ZstdSharp.Unsafe;
 using Microsoft.Extensions.Options;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,6 +20,8 @@ builder.Services.AddSingleton<IMongoClient, MongoClient>(s => new MongoClient(bu
 builder.Services.AddScoped<IGroupService, GroupService>();
 builder.Services.AddScoped<IGroupRepository, GroupRepository>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
+
+
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>{

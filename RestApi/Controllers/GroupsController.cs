@@ -5,7 +5,9 @@ using RestApi.Services;
 using RestApi.Mappers;
 using RestApi.Exceptions;
 using System.Net;
+
 using Microsoft.AspNetCore.Authorization;
+
 
 namespace RestApi.Controllers;
 
@@ -59,15 +61,18 @@ public class GroupsController : ControllerBase
         // 204 - sin response
 
 
+
     //Paginación tarea*
     [HttpGet]
     [Authorize(Policy = "Read")]
     public async Task<ActionResult<IEnumerable<GroupResponse>>> GetGroupsByName(
+
         [FromQuery] string name, 
         [FromQuery] int pageIndex, 
         [FromQuery] int pageSize, 
         [FromQuery] string orderBy,
         CancellationToken cancellationToken)
+
     {
         var groups = await _groupService.GetGroupsByNameAsync(name, pageIndex, pageSize, orderBy, cancellationToken);
         
@@ -80,7 +85,9 @@ public class GroupsController : ControllerBase
     }
     
     [HttpDelete("{id}")]
+
     [Authorize(Policy = "Write")]
+
     public async Task<IActionResult> DeleteGroup(string id, CancellationToken cancellationToken){
         try{
             await _groupService.DeleteGroupByIdAsync(id, cancellationToken);
@@ -91,7 +98,9 @@ public class GroupsController : ControllerBase
     }
 
     [HttpPost]
+
     [Authorize(Policy = "Write")]
+
     public async Task<ActionResult<GroupResponse>> CreateGroup([FromBody]CreateGroupRequest groupRequest, CancellationToken cancellationToken){
         try{
             var group = await _groupService.CreateGroupAsync(groupRequest.Name, groupRequest.Users, cancellationToken);
@@ -104,10 +113,12 @@ public class GroupsController : ControllerBase
             return Conflict(NewValidationProblemDetails("One or more validation errors occured.", HttpStatusCode.Conflict, new Dictionary<string, string[]>{
                 {"Groups", ["Group with same name already exists"]}
             }));
+
         }catch(UserDoesNotExistsException){
             return Conflict(NewValidationProblemDetails("One or more validation errors occured.", HttpStatusCode.Conflict, new Dictionary<string, string[]>{
                 {"Groups", ["User not found with the provided ID"]}
             }));
+
         }
     }
 
@@ -120,7 +131,9 @@ public class GroupsController : ControllerBase
     }
 
     [HttpPut("{id}")]
+
     [Authorize(Policy = "Write")]
+
     public async Task<IActionResult> UpdateGroup(string id, [FromBody] UpdateGroupRequest groupRequest, CancellationToken cancellationToken){
         try{
             await _groupService.UpdateGroupAsync(id, groupRequest.Name, groupRequest.Users, cancellationToken);
@@ -140,6 +153,7 @@ public class GroupsController : ControllerBase
                 {"Groups", ["User not found with the provided ID"]}
             }));
         }
+
     }
 
 }
