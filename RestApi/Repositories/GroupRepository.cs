@@ -53,7 +53,9 @@ public class GroupRepository : IGroupRepository
         {
             "name" => Builders<GroupEntity>.Sort.Ascending(x => x.Name),
             "creationDate" => Builders<GroupEntity>.Sort.Ascending(x => x.CreatedAt),
-            _ => Builders<GroupEntity>.Sort.Ascending(x => x.Name) 
+
+            _ => Builders<GroupEntity>.Sort.Ascending(x => x.Name) // Orden por defecto si no se especifica
+
         };
 
         var groups = await _groups
@@ -74,5 +76,15 @@ public class GroupRepository : IGroupRepository
         return group?.ToModel();
     }
 
+
+    public async Task UpdateGroupAsync(string id, string name, Guid[] users, CancellationToken cancellationToken)
+    {
+        var filter = Builders<GroupEntity>.Filter.Eq(x=>x.Id, id);
+        var update = Builders<GroupEntity>.Update
+        .Set(s => s.Name, name)
+        .Set(s => s.Users, users);
+
+        await _groups.UpdateOneAsync(filter, update, cancellationToken: cancellationToken);
+    }
 
 }
